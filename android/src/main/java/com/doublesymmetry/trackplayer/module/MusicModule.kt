@@ -536,7 +536,7 @@ class MusicModule(reactContext: ReactApplicationContext) : NativeTrackPlayerSpec
         bundle.putDouble("duration", musicService.getDurationInSeconds());
         bundle.putDouble("position", musicService.getPositionInSeconds());
         bundle.putDouble("buffered", musicService.getBufferedPositionInSeconds());
-        callback.resolve(Arguments.fromBundle(bundle))
+        callback.resolve(Arguments.fromBundle(musicService.tracks[index].originalItem ?: Bundle()))
     }
 
     override fun getPlaybackState(callback: Promise) = launchInScope {
